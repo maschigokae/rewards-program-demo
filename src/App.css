@@ -1,0 +1,101 @@
+#root {
+  width: 100%;
+}
+
+/* Keeping all component styles in App.css for demo simplicity; */
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #EEE;
+  padding: 0 20px;
+  height: 80px;
+}
+
+.nav-logo {
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 140px);
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #EEE;
+  height: 60px;
+}
+
+.card {
+  min-width: 700px;
+  background: #EEE;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1em 0;
+}
+
+.tooltip {
+  opacity: .7;
+  font-style: italic;
+  font-size: .8em;
+  margin: 1em 0;
+}
+
+.info-block {
+  margin: 1.2em 0;
+}
+
+.list-title {
+  margin-top: 1.2em;
+}
+
+.rewards-summary-monthly {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 360px;
+  padding: 0.5em 0;
+}
+
+.orders-list {
+  margin-bottom: 1.2em;
+}
+
+.orders-list-key {
+  font-weight: 600;
+  border-bottom: 1px solid #CCC;
+}
+
+.orders-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.5em 0;
+}
+
+.orders-list-item > div:nth-child(1) {
+  width: 120px;
+}
+.orders-list-item > div:nth-child(2) {
+  width: 90px;
+}
+.orders-list-item > div:nth-child(3) {
+  width: 150px;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+}
