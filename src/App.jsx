@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       <nav>
-        <div className='nav-logo'>
+        <div className="nav-logo">
           QualityOutdoorGear.com
         </div>
         <div>

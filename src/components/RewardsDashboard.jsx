@@ -33,16 +33,16 @@ const RewardsDashboard = ({ customer }) => {
 
     const calculateTotalRewards = orders => orders.reduce((totalPoints, order) => calculateRewards(order) + totalPoints, 0);
 
-    const calculateRewardsByMonth = orders => orders.reduce((rewardsByMonth, order) => {
+    const calculateRewardsByMonth = orders => orders.reduce((monthlyRewards, order) => {
         const orderDate = new Date(order.orderDate);
         const month = `${orderDate.getMonth()}-${orderDate.getFullYear()}`
         const points = calculateRewards(order);
-        if (rewardsByMonth[month]) {
-            rewardsByMonth[month] += points;
+        if (monthlyRewards[month]) {
+            monthlyRewards[month] += points;
         } else {
-            rewardsByMonth[month] = points;
+            monthlyRewards[month] = points;
         }
-        return rewardsByMonth;
+        return monthlyRewards;
     }, {});
 
     const getOrders = async () => {
@@ -69,22 +69,22 @@ const RewardsDashboard = ({ customer }) => {
     }, [customer]);
 
     if (loading) {
-        return <div className='loading'>Loading...</div>;
+        return <div className="loading">Loading...</div>;
     }
     
     return (
         <>
             <h1>Rewards Dashboard</h1>
-            <div className="customer-name">Hi {customer.name}!</div>
+            <div>Hi {customer.name}!</div>
             <div>Here is a summary of your last {monthsRange} months of rewards activity.</div>
-            <div className={'tooltip'}>Note: Rewards earned during the current month post to your account at the end of the month.</div>
+            <div className="tooltip">Note: Rewards earned during the current month post to your account at the end of the month.</div>
             <div>You have earned {rewards} rewards point{calcPlural(rewards)} between {startDateFormatted} and {endDateFormatted}.</div>
-            <div className='info-block'>Here is a breakdown of your rewards earned by month:</div>
+            <div className="info-block">Here is a breakdown of your rewards earned by month:</div>
 
             {monthOptions.map(month => {
                 const currentMonthPoints = rewardsByMonth[month.monthKey] || 0;
                 return (
-                    <div key={month.monthKey} className='rewards-summary-monthly'>
+                    <div key={month.monthKey} className="rewards-summary-monthly">
                         <div>{month.label}:</div>
                         <div>{currentMonthPoints} point{calcPlural(currentMonthPoints)}</div>
                     </div>
@@ -93,11 +93,11 @@ const RewardsDashboard = ({ customer }) => {
 
             {orders.length ? (
                 <>
-                    <div className='list-title'>Your orders for this date range:</div>
+                    <div className="list-title">Your orders for this date range:</div>
                     <OrdersList orders={orders} calculateRewards={calculateRewards} />
                 </>
             ) : (
-                <div className='info-block'>You have no orders to display for this date range.</div>
+                <div className="info-block">You have no orders to display for this date range.</div>
             )}
 
         </>
