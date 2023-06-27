@@ -35,14 +35,14 @@ export const mockData = {
                 // omitting tax, shipping, items, other fields...
             },
             {
-                orderId: 874205,
-                orderDate: '2023-03-01 00:00:00',
-                subtotal: 19.71,
-            },
-            {
                 orderId: 552914,
                 orderDate: '2023-03-01 00:00:00',
                 subtotal: 51.33,
+            },
+            {
+                orderId: 874205,
+                orderDate: '2023-03-02 00:00:00',
+                subtotal: 19.71,
             },
             {
                 orderId: 309846,
