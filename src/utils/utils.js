@@ -19,15 +19,14 @@ export const getFullMonthsRange = (range = 3, referenceDate = new Date()) => {
     const endDateMonth = endDate.getMonth();
     const endDateYear = endDate.getFullYear();
 
-    const monthOptions = [];
-
-    for (let i = 0; i < range; i++) {
-        const indexDate = new Date(endDateYear, endDateMonth - i);
-        const monthKey = `${indexDate.getMonth()}-${indexDate.getFullYear()}`;
-        const label = indexDate.toLocaleDateString('default', { month: 'long', year: 'numeric' });
-
-        monthOptions.unshift({ monthKey, label });
-    }
+    const monthOptions = new Array(range).fill(null)
+        .map((_, index) => {
+            const indexDate = new Date(endDateYear, endDateMonth - index);
+            const monthKey = `${indexDate.getMonth()}-${indexDate.getFullYear()}`;
+            const label = new Date(endDateYear, endDateMonth - index).toLocaleDateString('default', { month: 'long', year: 'numeric' });
+            return { monthKey, label };
+        })
+        .reverse();
 
     return {
         startDate,
